@@ -41,7 +41,7 @@ def graphviz(key, value, format, _):
         if "dot" in classes:
             caption, typef, keyvals = get_caption(keyvals)
             prog, keyvals = get_value(keyvals, u"prog", u"dot")
-            filetype = get_extension(format, "png", html="svg", latex="pdf")
+            filetype = get_extension(format, "png", html="png", latex="pdf")
             dest = get_filename4code("graphviz", code, filetype)
             if not os.path.isfile(dest):
                 g = pygraphviz.AGraph(string=code)
