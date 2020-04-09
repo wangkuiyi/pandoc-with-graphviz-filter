@@ -43,11 +43,13 @@ code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Ann
 code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
 code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
   </style>
-  <link rel="stylesheet" href="nrstyle.css" type="text/css" />
+  <link rel="stylesheet" href="./nrstyle.css" type="text/css" />
 </head>
 <body>
 <h1 id="using-pandoc-and-its-graphviz-filter">Using Pandoc And Its GraphViz Filter</h1>
-<p>From <a href="http://nrstickley.com/pandoc/example.html">this post</a>, I read the following command line to call pandoc with the GraphViz filter:</p>
+<p>To convert Markdown files of a directory, say <code>$HOME/my_art_work</code>, into HTML files, while converting the embedded GraphViz figures into SVG images, please run the following command</p>
+<p>```bash docker run cxwangyi/pandoc ## Pandoc and Markdown Filter</p>
+<p>From <a href="http://nrstickley.com/pandoc/example.html">this post</a>, I learned a command line to call pandoc with the GraphViz filter:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">pandoc</span> README.md -s --smart --mathjax \
          --css nrstyle.css \
          --highlight-style pygments \
@@ -57,9 +59,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>where the filter <code>graphviz.py</code> comes from <a href="https://github.com/jgm/pandocfilters/blob/master/examples/graphviz.py">here</a> and the <code>nrstyle.css</code> file comes from <a href="http://nrstickley.com/pandoc/nrstyle.css">here</a>. Indeed, you can use whatever CSS file you like or don’t use any.</p>
 <p>The above command requires pandoc. The pandoc filter <code>graphviz.py</code> requires GraphViz and some Python packages. <code>Dockerfile</code> lists all these dependencies. So you can install them by building a Docker image:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> build -t pandoc .</code></pre></div>
+<h2 id="process-markdown-with-graphviz">Process Markdown With GraphViz</h2>
 <p>Then run a container that executes this image:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">docker</span> run --rm -it -v <span class="va">$PWD</span>:/work -w /work pandoc bash</code></pre></div>
 <p>In the container, let us type the above long command, which converts this README.md file into REAME.html, while rendering the GraphViz figure into SVG figures in the HTML file.</p>
-<p><img src="graphviz-images/f0527b3cbb4bbcf6275cd952bc9be10bf47d1843.png" /></p>
+<p><img src="graphviz-images/f0527b3cbb4bbcf6275cd952bc9be10bf47d1843.svg" /></p>
 </body>
 </html>
