@@ -17,9 +17,9 @@ fi
 echo "Converting Markdown files in $workspace ..."
 cd "$workspace"
 
-cmd='pandoc -s -f markdown+smart -t markdown-smart --mathjax 
-         --highlight-style pygments 
-         --columns=200 
+cmd='pandoc -s -f markdown+smart --mathjax
+         --highlight-style pygments
+         --columns=200
          --filter ./.graphviz.py '
 
 css=$(du -a . | grep '\.css$' | cut -f 2 | sort | head -n 1)
@@ -28,7 +28,7 @@ if [[ -f $css ]]; then
     cmd="$cmd --css $css"
 fi
 
-cat <<EOF > .graphviz.py 
+cat <<EOF > .graphviz.py
 #!/usr/bin/env python
 import os
 import sys
@@ -61,4 +61,3 @@ for i in $(du -a . | grep '\.md$' | cut -f 2); do
     echo $cmd $i -o $target # && echo "Done: $i -> $target" || echo "Failed to convert: $i"
     $cmd $i -o $target # && echo "Done: $i -> $target" || echo "Failed to convert: $i"
 done
-
