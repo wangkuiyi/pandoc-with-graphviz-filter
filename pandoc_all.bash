@@ -17,7 +17,7 @@ fi
 echo "Converting Markdown files in $workspace ..."
 cd "$workspace"
 
-cmd='pandoc -s --smart --mathjax 
+cmd='pandoc -s -f markdown+smart -t markdown-smart --mathjax 
          --highlight-style pygments 
          --columns=200 
          --filter ./.graphviz.py '
