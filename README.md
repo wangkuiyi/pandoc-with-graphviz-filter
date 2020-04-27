@@ -20,15 +20,12 @@ digraph G {
     style="filled, rounded";
     color="#E6EAF2"
     node [style=filled,color=white];
-    a0 -> a1 -> a2 -> a3;
-    a3 -> a1 [label = " -10" color=red fontcolor=red];
-    label = "System A";
+    a0 -> a1;
   }
 
   subgraph cluster_1 {
     node [style=filled color="#E6EAF2"];
-    b0 -> b1 -> b2 -> b3;
-    b0 -> b2 [label = " +12" color=green fontcolor=green];
+    b0 -> b3;
     label = "System B";
     style="dashed, rounded"
     color=blue
@@ -37,11 +34,8 @@ digraph G {
   start -> a0;
   start -> b0;
   a1 -> b3;
-  a3 -> end;
-  b3 -> end;
 
   start [label="load" shape=folder];
-  end [label="store" shape=box3d];
 }
 ```
 
@@ -61,3 +55,9 @@ pandoc README.md -s --smart --mathjax \
 where the filter `graphviz.py` comes from [here](https://github.com/jgm/pandocfilters/blob/master/examples/graphviz.py) and the `nrstyle.css` file comes from [here](http://nrstickley.com/pandoc/nrstyle.css). Indeed, you can use whatever CSS file you like or don't use any.
 
 The above command requires pandoc.  The pandoc filter `graphviz.py` requires GraphViz and some Python packages.  `Dockerfile` lists all these dependencies.
+
+## Math
+
+Here attaches a math equation to check if the converter can handle it.
+
+$$\oiint_V f(s,t) \,ds\,dt$$
