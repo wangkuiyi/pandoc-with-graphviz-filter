@@ -2,7 +2,8 @@
 import os
 import sys
 import pygraphviz
-from pandocfilters import toJSONFilter, Para, Image, get_filename4code, get_caption, get_extension, get_value
+from pandocfilters import (toJSONFilter, Para, Image, get_filename4code,
+                           get_caption, get_extension, get_value)
 
 
 def graphviz(key, value, format, _):
