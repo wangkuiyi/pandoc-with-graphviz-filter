@@ -12,6 +12,11 @@ ENV PATH=/usr/local/pandoc-2.9.2.1/bin:$PATH
 RUN apt-get install -y graphviz libgraphviz-dev
 RUN python -m pip install pygraphviz pandocfilters
 
+# Install CJK fonts.
+RUN curl -s -L https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSC.zip > f.zip && \
+	unzip f.zip && \
+	mv *.otf  /usr/local/share/fonts/
+
 COPY graphviz.py /graphviz.py
 COPY pandoc_all.bash /pandoc_all.bash
 # Require -v $MARKDOWN_FILE_DIR:/work when docker run
