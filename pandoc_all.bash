@@ -20,7 +20,7 @@ cd "$workspace"
 cmd='pandoc -s -f markdown+smart
          --pdf-engine xelatex
          --filter /graphviz.py 
-         --css /nrstyle.css '
+         -V papersize:a4 '
 
 for i in $(du -a . | grep '\.md$' | cut -f 2); do
     target=$(echo $i | sed 's/md$/pdf/')
