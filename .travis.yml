@@ -1,0 +1,13 @@
+language: minimal
+
+services:
+    - docker
+
+before-install:
+    - docker build -t pandoc .
+
+deploy:
+    provider: script
+    script: bash .travis-ci/docker_push.sh
+    on:
+        branch: master
