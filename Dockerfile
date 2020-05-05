@@ -23,6 +23,6 @@ RUN curl -s -L https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSC.zip
 	mv *.otf  /usr/local/share/fonts/
 
 COPY graphviz.py /graphviz.py
-COPY pandoc_all.bash /pandoc_all.bash
+COPY mdtopdf.bash /mdtopdf.bash
 # Require -v $MARKDOWN_FILE_DIR:/work when docker run
-CMD ["/pandoc_all.bash", "/work"]
+CMD ["/mdtopdf.bash", "/work"]
