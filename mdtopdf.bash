@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cmd='pandoc -s -f markdown+smart
          --pdf-engine xelatex
          --filter /graphviz.py 
