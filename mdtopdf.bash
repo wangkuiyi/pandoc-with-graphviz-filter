@@ -5,7 +5,7 @@ if [[ $# == "0" ]]; then
 elif [[ $# == "1" ]]; then
     workspace=$1
 else
-    echo "Usage: pandoc_all.bash <directory of .md files>"
+    echo "Usage: mdtopdf.bash <directory of .md files>"
     exit 1
 fi
 
