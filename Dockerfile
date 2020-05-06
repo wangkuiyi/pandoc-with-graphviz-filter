@@ -1,11 +1,11 @@
 # The GraphViz filter for Pandoc is in Python.
-FROM python:3.8
+FROM python:3.8-slim-buster
 
 # Pandoc calls XeLaTex to generate PDF files.  Our Pandoc filter
 # requires GraphViz and its Python binding, which depends on
 # libgrpahviz-dev.
 RUN apt-get -qq update && \
-	apt-get -qq install -y texlive-xetex graphviz libgraphviz-dev && \
+	apt-get -qq install -y texlive-xetex graphviz libgraphviz-dev curl build-essential && \
 	apt-get -qq clean && \
 	apt-get -qq autoremove && \
 	rm -rf /var/lib/apt/lists/* /tmp/*
@@ -20,7 +20,8 @@ RUN python -m pip --quiet install --upgrade pip && \
 # Install CJK fonts.
 RUN curl -s -L https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSC.zip > f.zip && \
 	unzip -qq f.zip && \
-	mv *.otf  /usr/local/share/fonts/
+	mv *.otf  /usr/local/share/fonts/ && \
+        rm f.zip
 
 COPY graphviz.py /graphviz.py
 COPY mdtopdf.bash /mdtopdf.bash
