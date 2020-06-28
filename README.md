@@ -12,7 +12,7 @@ header-includes: |
 
   ```bash
   docker run --rm -v $HOME/my_artwork:/work cxwangyi/pandoc \
-    mdtopdf.bash /work/a.md
+    /mdtopdf.bash /work/a.md
   ```
 
 - To convert all Markdown files in a directory, say `~/my_artwork`,
@@ -21,7 +21,7 @@ header-includes: |
 
   ```bash
   docker run --rm -v $HOME/my_artwork:/work cxwangyi/pandoc \
-    mdtopdf.bash /work
+    /mdtopdf.bash /work
   ```
 
 - To convert some files, say `~/my_artwork/a.md` and
@@ -30,7 +30,7 @@ header-includes: |
 
   ```bash
   docker run --rm -v $HOME/my_artwork:/work cxwangyi/pandoc \
-    mdtopdf.bash /work/a.md /work/b.md /work/docs
+    /mdtopdf.bash /work/a.md /work/b.md /work/docs
   ```
 
 ## Supported Content
