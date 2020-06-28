@@ -7,29 +7,29 @@ header-includes: |
 
 # Dockerized Markdown-to-PDF Converter
 
-- To convert a Markdown file, say `~/my_artwork/a.md`, into
+- To convert a Markdown file, say `./a.md`, into
   `~/my_artwork/a.pdf`, please run the following command:
 
   ```bash
-  docker run --rm -v $HOME/my_artwork:/work cxwangyi/pandoc \
+  docker run --rm -v $PWD:/work cxwangyi/pandoc \
     /mdtopdf.bash /work/a.md
   ```
 
-- To convert all Markdown files in a directory, say `~/my_artwork`,
+- To convert all Markdown files in a directory, say `./`,
   and all its recursively sub-directoreis, into PDF files, please run
   the following command:
 
   ```bash
-  docker run --rm -v $HOME/my_artwork:/work cxwangyi/pandoc \
+  docker run --rm -v $PWD:/work cxwangyi/pandoc \
     /mdtopdf.bash /work
   ```
 
-- To convert some files, say `~/my_artwork/a.md` and
-  `~/my_artwork/b.md`, and some directories, say `~/my_artwork/docs`,
+- To convert some files, say `./a.md` and
+  `./b.md`, and some directories, say `./docs`,
   just list them.
 
   ```bash
-  docker run --rm -v $HOME/my_artwork:/work cxwangyi/pandoc \
+  docker run --rm -v $PWD:/work cxwangyi/pandoc \
     /mdtopdf.bash /work/a.md /work/b.md /work/docs
   ```
 
